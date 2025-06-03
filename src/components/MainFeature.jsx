@@ -305,14 +305,14 @@ const MainFeature = () => {
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {filteredShifts.map(shift => {
+{filteredShifts.map(shift => {
                   const shiftStatus = getShiftStatus(shift)
-                  const assignedCount = shift?.assignedStaff?.length || 0
-                  const requiredCount = shift?.requiredStaff || 0
+                  const assignedCount = shift?.assigned_staff?.length || 0
+                  const requiredCount = shift?.required_staff || 0
                   
                   return (
                     <motion.div
-                      key={shift.id}
+                      key={shift.Id}
                       className={`p-4 rounded-xl border-2 border-dashed transition-all duration-200 hover:shadow-md ${shiftStatus.color}`}
                       onDragOver={handleDragOver}
                       onDrop={(e) => handleDrop(e, shift)}
@@ -323,7 +323,7 @@ const MainFeature = () => {
                           {shift.department}
                         </h4>
                         <span className="text-xs text-surface-500 dark:text-surface-400">
-                          {shift.startTime} - {shift.endTime}
+                          {shift.start_time} - {shift.end_time}
                         </span>
                       </div>
                       
@@ -339,9 +339,9 @@ const MainFeature = () => {
                       {/* Assigned Staff */}
                       <div className="space-y-2 mb-3">
                         <AnimatePresence>
-                          {shift?.assignedStaff?.map(staff => (
+                          {shift?.assigned_staff?.map(staff => (
                             <motion.div
-                              key={staff.id}
+                              key={staff.Id || staff.id}
                               initial={{ opacity: 0, height: 0 }}
                               animate={{ opacity: 1, height: 'auto' }}
                               exit={{ opacity: 0, height: 0 }}
@@ -352,7 +352,7 @@ const MainFeature = () => {
                                   <ApperIcon name="User" className="h-3 w-3 text-white" />
                                 </div>
                                 <span className="text-xs font-medium text-surface-900 dark:text-white">
-                                  {staff.name}
+                                  {staff.Name || staff.name}
                                 </span>
                               </div>
                               <button
