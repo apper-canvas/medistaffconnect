@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { toast } from 'react-toastify'
 import ApperIcon from './ApperIcon'
-import employeeService from '../services/api/employeeService'
-import shiftService from '../services/api/shiftService'
-import departmentService from '../services/api/departmentService'
-
+import employeeService from '../services/employeeService'
+import shiftService from '../services/shiftService'
+import departmentService from '../services/departmentService'
 const MainFeature = () => {
   const [employees, setEmployees] = useState([])
   const [shifts, setShifts] = useState([])
